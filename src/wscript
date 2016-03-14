@@ -1,0 +1,10 @@
+
+
+subdirs = [
+    'client',
+    'server',
+        ]
+
+def build(bld):
+    bld.recurse(subdirs)
+

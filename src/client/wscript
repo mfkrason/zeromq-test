@@ -1,0 +1,11 @@
+
+subdirs = [
+        ]
+
+sources = [
+	'ClientLibrary.cpp',
+		]
+
+def build(bld):
+	bld.collect('client_lib', sources)
+

@@ -1,0 +1,10 @@
+
+
+sources = [
+	'Server.cpp',
+		]
+
+def build(bld):
+	bld.collect('server_lib', sources)
+
+
