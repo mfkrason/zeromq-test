@@ -3,7 +3,7 @@ subdirs = [
         ]
 
 sources = [
-	'ClientLibrary.cpp',
+	'Client.cpp',
 		]
 
 def build(bld):

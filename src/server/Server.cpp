@@ -5,6 +5,8 @@
 
 #include <cstring>
 #include <iostream>
+#include <thread>
+#include <chrono>
 
 int Server::main()
 {
@@ -14,15 +16,21 @@ int Server::main()
 
 	while(1)
 	{
-		zmq::message_t request;
+		{
+			zmq::message_t request;
 
-		socket.recv( &request );
+			socket.recv( &request );
 
-		std::cout << "Received request" << std::endl;
+			std::cout << "Received request" << std::endl;
+			std::this_thread::sleep_for(
+					std::chrono::seconds(1) );
+		}
 
-		zmq::message_t reply(5);
-		memcpy( reply.data(), "World", 5 );
-		//socket.send( &reply );
+		{
+			zmq::message_t reply(5);
+			memcpy( reply.data(), "World", 5 );
+			socket.send( reply );
+		}
 	}
 
 	return 0;
